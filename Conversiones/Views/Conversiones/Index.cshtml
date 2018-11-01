@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Conversiones</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-9">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Proceso de conversión
+                </div>
+                <div class="panel-body">
+                    <form action="/" method="post">
+                        <label>Unidad ingresada</label>
+                        <div class="form-group">
+                            <label class="radio-inline">
+                                <input type="radio" name="UnidadIngresada" checked value="Centimetros">Centimetros
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="UnidadIngresada" value="Metros">Metros
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="UnidadIngresada" value="Kilometros">Kilometros
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="UnidadIngresada" value="Millas">Millas
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="ValorUnidad" class="control-label">Ingrese la cantidad</label>
+                            <input type="text" class="form-control" name="ValorUnidad" onkeypress="return check(event)" required/>
+                        </div>
+                        <label>Unidad Esperada</label>
+                        <div class="form-group">
+                            <label class="radio-inline">
+                                <input type="radio" name="UnidadEsperada" checked value="Centimetros">Centimetros
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="UnidadEsperada" value="Metros">Metros
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="UnidadEsperada" value="Kilometros">Kilometros
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="UnidadEsperada" value="Millas">Millas
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Convertir</button>
+                        </div>
+                        <div class="jumbotron">
+                            @ViewBag.Resultado
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    function check(e) {
+        tecla = (document.all) ? e.keyCode : e.which;
+
+        if (tecla == 8) {
+            return true;
+        }
+
+        patron = /[0-9]/;
+        tecla_final = String.fromCharCode(tecla);
+        return patron.test(tecla_final);
+    }
+
+</script>
+
